@@ -1,0 +1,44 @@
+server:
+  port: 9007
+  servlet:
+    context-path: /AyuHealth
+    session:
+      cookie:
+        http-only: true
+spring :
+  application :
+    name : BOOKING-SERVICE
+
+#eureka :
+ # client :
+  #  register-with-eureka : true
+   # fetch-registry : true
+    #service-url :
+     # defaultzone : http://localhost:8761/eureka/
+
+    #instance :
+    #  hostname : localhost
+
+# application:
+infinispan:
+  server:
+    # URLs of Infinispan server, put multiple server urls separated by semicolon(;) example:- 127.0.0.1:11222;127.0.0.1:11322
+    urls: 127.0.0.1:10772
+
+  jackson:
+    serialization:
+      indent-output: true
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/TestServices
+    username: postgres
+    password: postgres
+    hikari:
+      poolName: Hikari
+      auto-commit: false
+      maximum-pool-size: 75
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
