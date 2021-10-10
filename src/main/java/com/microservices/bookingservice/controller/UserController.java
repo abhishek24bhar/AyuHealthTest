@@ -5,6 +5,7 @@ package com.microservices.bookingservice.controller;
 
 import javax.validation.constraints.Min;
 
+import com.microservices.bookingservice.dto.commonDTO.UserDTO;
 import com.microservices.bookingservice.dto.request.UserDto;
 import com.microservices.bookingservice.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,14 +21,14 @@ import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
-@RequestMapping("user")
+@RequestMapping("user/")
 public class UserController {
 
 	@Autowired
 	private UserService userService;
 
 	@PostMapping("add")
-	public ResponseEntity<UserDto> addUser(@RequestBody UserDto userDto) {
+	public ResponseEntity<UserDTO> addUser(@RequestBody UserDTO userDto) {
 
 		log.info("Received Request to add new user: " + userDto);
 
@@ -35,7 +36,7 @@ public class UserController {
 	}
 
 	@GetMapping("{id}")
-	public ResponseEntity<UserDto> getUser(@PathVariable(name = "id") @Min(value = 1, message = "User Id Cannot be -ve") long id) {
+	public ResponseEntity<UserDTO> getUser(@PathVariable(name = "id") @Min(value = 1, message = "User Id Cannot be -ve") long id) {
 
 		log.info("Received Request to get user: " + id);
 

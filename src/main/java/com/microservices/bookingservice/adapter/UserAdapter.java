@@ -4,6 +4,7 @@
 package com.microservices.bookingservice.adapter;
 
 
+import com.microservices.bookingservice.dto.commonDTO.UserDTO;
 import com.microservices.bookingservice.dto.request.UserDto;
 import com.microservices.bookingservice.domain.UserEntity;
 import lombok.experimental.UtilityClass;
@@ -11,20 +12,20 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public class UserAdapter {
 
-	public static UserEntity toEntity(UserDto userDto) {
+	public static UserEntity toEntity(UserDTO userDto) {
 
 		return UserEntity.builder()
-				.name(userDto.getName())
+				.firstName(userDto.getFirstName())
 				.mobile(userDto.getMobile())
 				.build();
 
 	}
 
-	public static UserDto toDto(UserEntity userEntity) {
+	public static UserDTO toDto(UserEntity userEntity) {
 
-		return UserDto.builder()
+		return UserDTO.builder()
 				.id(userEntity.getId())
-				.name(userEntity.getName())
+				.firstName(userEntity.getFirstName())
 				.mobile(userEntity.getMobile())
 				.build();
 	}

@@ -8,6 +8,7 @@ import java.util.Optional;
 import javax.persistence.EntityNotFoundException;
 
 import com.microservices.bookingservice.adapter.UserAdapter;
+import com.microservices.bookingservice.dto.commonDTO.UserDTO;
 import com.microservices.bookingservice.dto.request.UserDto;
 import com.microservices.bookingservice.exception.DuplicateRecordException;
 import com.microservices.bookingservice.repository.UserRepository;
@@ -28,7 +29,7 @@ public class UserServiceImpl implements UserService {
 	private UserRepository userRepository;
 
 	@Override
-	public UserDto addUser(UserDto userDto) {
+	public UserDTO addUser(UserDTO userDto) {
 
 		if (userRepository.existsByMobile(userDto.getMobile())) {
 			throw new DuplicateRecordException("User Already Exists with Mobile: " + userDto.getMobile());
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public UserDto getUser(long id) {
+	public UserDTO getUser(long id) {
 
 		log.info("Searching User by id: " + id);
 

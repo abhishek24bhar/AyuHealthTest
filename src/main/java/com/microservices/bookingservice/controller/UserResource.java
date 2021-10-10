@@ -68,7 +68,7 @@ public class UserResource {
         }  else if (userRepository.findOneByEmailIgnoreCase(userDTO.getEmail()).isPresent()) {
             throw new EmailAlreadyUsedException();
         }else {
-            UserEntity newUser = userService.addUser(userDTO);
+            UserDTO newUser = userService.addUser(userDTO);
             return new CommonResponse(ErrorCodeAndDescription.code_0.getCode(), ErrorCodeAndDescription.code_0.getDescription());
         }
     }
@@ -76,7 +76,6 @@ public class UserResource {
     /**
      * {@code PUT /users} : Updates an existing User.
      *
-     * @param userDTO the user to update.
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and with body the updated user.
 
     @PutMapping("/updateUser")

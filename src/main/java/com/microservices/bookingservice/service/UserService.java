@@ -4,13 +4,14 @@
 package com.microservices.bookingservice.service;
 
 
+import com.microservices.bookingservice.dto.commonDTO.UserDTO;
 import com.microservices.bookingservice.dto.request.UserDto;
 
 public interface UserService {
 
-	UserDto addUser(UserDto userDto);
+	UserDTO addUser(UserDTO userDto);
 
-	UserDto getUser(long id);
+	UserDTO getUser(long id);
 
 	boolean deleteUser(String login);
 }
